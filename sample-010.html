@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading practice 010: Words that travel</title>
+<style>
+body{font-family:Georgia,serif;max-width:760px;margin:0 auto;padding:16px;line-height:1.6;color:#222;background:#fafafa}
+h1{font-size:1.5rem;margin-bottom:4px}
+.meta{font-family:Arial,sans-serif;font-size:.85rem;background:#eef3f8;border:1px solid #cdd9e5;border-radius:6px;padding:10px;margin:10px 0 20px}
+.meta span{display:inline-block;margin-right:14px}
+.passage{background:#fff;border:1px solid #ddd;border-radius:6px;padding:4px 18px}
+.q{font-family:Arial,sans-serif;background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:bold}
+.q label{display:block;padding:4px 0;cursor:pointer}
+.qtype{font-weight:normal;font-size:.8rem;color:#567}
+button{font-size:1rem;padding:10px 22px;border:0;border-radius:6px;background:#1f5fa8;color:#fff;cursor:pointer}
+button:disabled{background:#999}
+.ok{border-left:6px solid #2e8b57}
+.bad{border-left:6px solid #c0392b}
+.fb{font-family:Arial,sans-serif;font-size:.92rem;margin-top:8px}
+#result{font-family:Arial,sans-serif;display:none;margin-top:20px}
+#code{width:100%;box-sizing:border-box;font-family:monospace;padding:8px}
+.note{font-family:Arial,sans-serif;font-size:.8rem;color:#555}
+</style>
+</head>
+<body>
+<h1>Words that travel</h1>
+<div class="meta" id="meta">
+<span><b>Test ID:</b> <span id="mid"></span></span>
+<span><b>Topic:</b> <span id="mtopic"></span></span>
+<span><b>Editorial difficulty:</b> <span id="mdiff"></span> (a guess before reading, not a measured level)</span><br>
+<span><b>Words:</b> <span id="mwords"></span></span>
+<span><b>Reading time:</b> about 2 minutes</span><br>
+<span><b>Source:</b> original passage written for practice, so full text is included.</span>
+</div>
+
+<div class="passage" id="passage">
+<p>English is often described as a borrower. Walk through a market in any Indian city and you will hear the evidence: shampoo, jungle, bungalow and pyjamas all began as words from South Asian languages before turning up in English dictionaries. The same is true in the other direction, as "table", "station" and "school" now sit comfortably inside Hindi, Tamil and Bengali speech.</p>
+<p>Such borrowing is usually driven by need rather than prestige. When traders, soldiers or sailors meet something that has no name in their own language, the quickest solution is to take the word that goes with the object. Over time the word is bent to fit the new language: its sound shifts, its spelling settles, and the speakers forget it was ever foreign.</p>
+<p>Purists often object, warning that a language filled with borrowed words loses its character. History suggests otherwise. Languages that have absorbed the most from others, English among them, tend to be the ones with the largest vocabularies and the most flexible ways of expression. A language, it seems, is strengthened by contact more than weakened by it.</p>
+<p>None of this means that every import is an improvement. Some borrowed words replace perfectly good native ones for no reason beyond fashion. But the process itself is as old as speech, and it is hard to stop.</p>
+</div>
+
+<form id="quiz" onsubmit="return false">
+<div id="questions"></div>
+<button id="submit" type="button" onclick="submitQuiz()">Submit answers</button>
+<p class="note" id="warn"></p>
+</form>
+
+<div id="result">
+<h2 id="score"></h2>
+<div id="review"></div>
+<h3>What to practise next</h3>
+<ul id="reco"></ul>
+<h3>Results code</h3>
+<p class="note">This page does not save anything and does not send anything anywhere. Press Copy result code (or select it) and paste it in your chat to your parent so the result can be recorded.</p>
+<input id="code" readonly onclick="this.select()">
+<button id="copybtn" type="button" onclick="copyCode()">Copy result code</button> <span id="copied" class="note"></span>
+</div>
+
+<script>
+// Answer key is inside this file on purpose (practice use). Anyone can read it in the page source.
+var TEST = {
+ "id": "VA-010",
+ "topic": "language",
+ "difficulty": "medium",
+ "questions": [
+  {
+   "type": "main idea",
+   "q": "Which statement best sums up the passage?",
+   "o": [
+    "English is the only language that borrows words.",
+    "Borrowing words damages a language and should be avoided.",
+    "Borrowing is a natural, need-driven process that usually enriches a language rather than weakening it.",
+    "Indian languages have lost their character because of English."
+   ],
+   "a": 2,
+   "why": "The passage describes borrowing as driven by need, says contact tends to strengthen languages, and admits only some imports are pointless. Options A, B and D are not what it argues."
+  },
+  {
+   "type": "detail",
+   "q": "According to the passage, why do languages usually borrow words?",
+   "o": [
+    "Speakers meet something that has no name in their own language.",
+    "A government orders it.",
+    "Speakers want to hide their meaning.",
+    "Native words sound ugly."
+   ],
+   "a": 0,
+   "why": "The second paragraph says need, such as meeting an object with no name, is the usual driver."
+  },
+  {
+   "type": "inference",
+   "q": "What does \"the speakers forget it was ever foreign\" suggest?",
+   "o": [
+    "Borrowed words are soon rejected.",
+    "Speakers dislike foreign words.",
+    "Borrowed words are dropped after a year.",
+    "Over time a borrowed word comes to feel like a native one."
+   ],
+   "a": 3,
+   "why": "If speakers forget the word was foreign, it has become part of the language and feels native."
+  },
+  {
+   "type": "vocabulary in context",
+   "q": "In \"Purists often object\", \"purists\" most nearly means:",
+   "o": [
+    "people who sell food",
+    "people who want a language kept free of outside influence",
+    "poets",
+    "translators"
+   ],
+   "a": 1,
+   "why": "Purists are the people who warn that borrowed words spoil the language, so they want it kept pure."
+  },
+  {
+   "type": "tone or purpose",
+   "q": "The author's attitude toward borrowing is best described as:",
+   "o": [
+    "hostile",
+    "sad",
+    "mostly positive but balanced",
+    "indifferent"
+   ],
+   "a": 2,
+   "why": "The author argues borrowing usually strengthens a language, but admits some borrowed words are pointless fashion, so the view is balanced."
+  }
+ ],
+ "tips": {
+  "main idea": "Say the whole passage in one sentence before reading the options. Reject options that cover only one part, overstate, or blame.",
+  "inference": "Ask what must be true if the author says this. Watch for absolute words like always, never, all.",
+  "tone or purpose": "Underline words that show attitude. Ask what the author wants the reader to understand or feel at the end.",
+  "vocabulary in context": "Read the sentence around the word, guess a meaning, then test each option in the sentence.",
+  "detail": "Find the exact sentence that answers the question, then check that the option matches it, not just something similar."
+ }
+};
+var letters = ["A","B","C","D"];
+document.getElementById("mid").textContent = TEST.id;
+document.getElementById("mtopic").textContent = TEST.topic;
+document.getElementById("mdiff").textContent = TEST.difficulty;
+document.getElementById("mwords").textContent = document.getElementById("passage").innerText.trim().split(/\s+/).length;
+var qs = document.getElementById("questions");
+TEST.questions.forEach(function(q, i){
+  var d = document.createElement("div"); d.className = "q"; d.id = "q"+i;
+  var h = '<p>'+(i+1)+'. '+q.q+' <span class="qtype">('+q.type+')</span></p>';
+  q.o.forEach(function(opt, j){
+    h += '<label><input type="radio" name="q'+i+'" value="'+j+'"> '+letters[j]+'. '+opt+'</label>';
+  });
+  h += '<div class="fb" id="fb'+i+'"></div>';
+  d.innerHTML = h; qs.appendChild(d);
+});
+function submitQuiz(){
+  var picks = [];
+  for (var i=0;i<TEST.questions.length;i++){
+    var c = document.querySelector('input[name="q'+i+'"]:checked');
+    picks.push(c ? parseInt(c.value,10) : -1);
+  }
+  if (picks.indexOf(-1) !== -1){
+    document.getElementById("warn").textContent = "Please answer every question before submitting.";
+    return;
+  }
+  document.getElementById("warn").textContent = "";
+  var score = 0, wrongTypes = [], codeAns = "";
+  TEST.questions.forEach(function(q,i){
+    var box = document.getElementById("q"+i), fb = document.getElementById("fb"+i);
+    var right = picks[i] === q.a;
+    if (right) score++; else wrongTypes.push(q.type);
+    box.className = "q " + (right ? "ok" : "bad");
+    fb.innerHTML = (right ? "Correct. " : "Not quite. Your answer: "+letters[picks[i]]+". Correct answer: "+letters[q.a]+". ") + q.why;
+    codeAns += letters[picks[i]];
+    var radios = document.getElementsByName("q"+i);
+    for (var k=0;k<radios.length;k++) radios[k].disabled = true;
+  });
+  document.getElementById("submit").disabled = true;
+  document.getElementById("score").textContent = "Score: "+score+" / "+TEST.questions.length;
+  var reco = document.getElementById("reco");
+  if (wrongTypes.length === 0){
+    reco.innerHTML = "<li>All correct. Next time try a harder article or a new topic.</li>";
+  } else {
+    var seen = {};
+    wrongTypes.forEach(function(t){
+      if (!seen[t]){ seen[t]=1; var li=document.createElement("li"); li.textContent = t+": "+TEST.tips[t]; reco.appendChild(li); }
+    });
+  }
+  var today = new Date().toISOString().slice(0,10);
+  document.getElementById("code").value = TEST.id+"|"+TEST.topic+"|"+TEST.difficulty+"|"+score+"/"+TEST.questions.length+"|"+codeAns+"|"+today;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").scrollIntoView();
+}
+function copyCode(){
+  var el=document.getElementById("code"), msg=document.getElementById("copied");
+  function ok(){msg.textContent="Copied. Paste it in your chat.";}
+  function fallback(){el.select();el.setSelectionRange(0,99999);try{document.execCommand("copy")?ok():msg.textContent="Could not copy. Select the code and copy it by hand.";}catch(e){msg.textContent="Could not copy. Select the code and copy it by hand.";}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el.value).then(ok,fallback);}else{fallback();}
+}
+</script>
+</body>
+</html>
