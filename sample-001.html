@@ -55,8 +55,9 @@ button:disabled{background:#999}
 <h3>What to practise next</h3>
 <ul id="reco"></ul>
 <h3>Results code</h3>
-<p class="note">This page does not save anything and does not send anything anywhere. Copy this code and send it to your parent so the result can be recorded.</p>
+<p class="note">This page does not save anything and does not send anything anywhere. Press Copy result code (or select it) and paste it in your chat to your parent so the result can be recorded.</p>
 <input id="code" readonly onclick="this.select()">
+<button id="copybtn" type="button" onclick="copyCode()">Copy result code</button> <span id="copied" class="note"></span>
 </div>
 
 <script>
@@ -151,6 +152,12 @@ function submitQuiz(){
   document.getElementById("code").value = TEST.id+"|"+TEST.topic+"|"+TEST.difficulty+"|"+score+"/"+TEST.questions.length+"|"+codeAns+"|"+today;
   document.getElementById("result").style.display = "block";
   document.getElementById("result").scrollIntoView();
+}
+function copyCode(){
+  var el=document.getElementById("code"), msg=document.getElementById("copied");
+  function ok(){msg.textContent="Copied. Paste it in your chat.";}
+  function fallback(){el.select();el.setSelectionRange(0,99999);try{document.execCommand("copy")?ok():msg.textContent="Could not copy. Select the code and copy it by hand.";}catch(e){msg.textContent="Could not copy. Select the code and copy it by hand.";}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el.value).then(ok,fallback);}else{fallback();}
 }
 </script>
 </body>
