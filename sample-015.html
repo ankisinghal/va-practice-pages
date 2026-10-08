@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading practice 015: The score on the door</title>
+<style>
+body{font-family:Georgia,serif;max-width:760px;margin:0 auto;padding:16px;line-height:1.6;color:#222;background:#fafafa}
+h1{font-size:1.5rem;margin-bottom:4px}
+.meta{font-family:Arial,sans-serif;font-size:.85rem;background:#eef3f8;border:1px solid #cdd9e5;border-radius:6px;padding:10px;margin:10px 0 20px}
+.meta span{display:inline-block;margin-right:14px}
+.passage{background:#fff;border:1px solid #ddd;border-radius:6px;padding:4px 18px}
+.q{font-family:Arial,sans-serif;background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:bold}
+.q label{display:block;padding:4px 0;cursor:pointer}
+.qtype{font-weight:normal;font-size:.8rem;color:#567}
+button{font-size:1rem;padding:10px 22px;border:0;border-radius:6px;background:#1f5fa8;color:#fff;cursor:pointer}
+button:disabled{background:#999}
+.ok{border-left:6px solid #2e8b57}
+.bad{border-left:6px solid #c0392b}
+.fb{font-family:Arial,sans-serif;font-size:.92rem;margin-top:8px}
+#result{font-family:Arial,sans-serif;display:none;margin-top:20px}
+#code{width:100%;box-sizing:border-box;font-family:monospace;padding:8px}
+.note{font-family:Arial,sans-serif;font-size:.8rem;color:#555}
+</style>
+</head>
+<body>
+<h1>The score on the door</h1>
+<div class="meta" id="meta">
+<span><b>Test ID:</b> <span id="mid"></span></span>
+<span><b>Topic:</b> <span id="mtopic"></span></span>
+<span><b>Editorial difficulty:</b> <span id="mdiff"></span> (a guess before reading, not a measured level)</span><br>
+<span><b>Words:</b> <span id="mwords"></span></span>
+<span><b>Reading time:</b> about 2 minutes</span><br>
+<span><b>Source:</b> original passage written for practice, so full text is included.</span>
+</div>
+
+<div class="passage" id="passage">
+<p>A small town introduces an app that lets residents rate every shop on its main street. The council hopes the ratings will help newcomers choose where to eat, and many shopkeepers welcome the idea. Within a month, however, the scores begin to shape behaviour in ways nobody planned.</p>
+<p>Cafes with a few enthusiastic reviewers rise to the top, while a quiet bookbinder with loyal but silent customers sinks to the bottom. Some owners start asking customers to leave reviews at the till. Others avoid risky experiments, such as an unusual menu item, because one unhappy rating could pull down a score that has taken weeks to build.</p>
+<p>A council member argues that the numbers are still better than nothing, since visitors previously had only guesswork. A shopkeeper replies that a number is not neutral merely because it is precise. It records what people chose to report, and it rewards what is easy to measure.</p>
+<p>Eventually the council keeps the app but adds a short written note beside each score explaining how many reviews it rests on. The change does not settle the argument, yet it reminds residents that a rating is a summary, not a verdict.</p>
+</div>
+
+<form id="quiz" onsubmit="return false">
+<div id="questions"></div>
+<button id="submit" type="button" onclick="submitQuiz()">Submit answers</button>
+<p class="note" id="warn"></p>
+</form>
+
+<div id="result">
+<h2 id="score"></h2>
+<div id="review"></div>
+<h3>What to practise next</h3>
+<ul id="reco"></ul>
+<h3>Results code</h3>
+<p class="note">This page does not save anything and does not send anything anywhere. Press Copy result code (or select it) and paste it into your own Instinct chat so the result can be recorded.</p>
+<input id="code" readonly onclick="this.select()">
+<button id="copybtn" type="button" onclick="copyCode()">Copy result code</button> <span id="copied" class="note"></span>
+</div>
+
+<script>
+// Answer key is inside this file on purpose (practice use). Anyone can read it in the page source.
+var TEST = {
+ "id": "VA-015",
+ "topic": "technology",
+ "difficulty": "medium",
+ "questions": [
+  {
+   "type": "main idea",
+   "q": "What is the central idea of the passage?",
+   "o": [
+    "Local councils should avoid introducing new technology to shops.",
+    "Customers give more honest reviews when shopkeepers ask for them.",
+    "Ratings summarise reality, yet they can also change shop behaviour.",
+    "Numerical scores are more reliable than the guesswork they replaced."
+   ],
+   "a": 2,
+   "why": "The passage shows a rating system simplifying what shops offer while also changing what owners do. It does not say the app should be dropped or that scores are fully reliable."
+  },
+  {
+   "type": "detail",
+   "q": "Why do some owners avoid unusual menu items?",
+   "o": [
+    "A single unhappy rating could pull down a slowly built score.",
+    "The council has banned menu changes without its approval.",
+    "Newcomers to the town prefer familiar dishes to anything unusual.",
+    "Customers rarely return to shops that change their menus often."
+   ],
+   "a": 0,
+   "why": "The second paragraph says one unhappy rating could pull down a score that took weeks to build. The other options are not stated in the passage."
+  },
+  {
+   "type": "inference",
+   "q": "What can reasonably be inferred about the bookbinder's low ranking?",
+   "o": [
+    "The bookbinder's customers are mostly dissatisfied with the work.",
+    "It may reflect few reviews rather than poor workmanship.",
+    "The bookbinder charges higher prices than the nearby cafes.",
+    "Newcomers to the town rarely need bound books."
+   ],
+   "a": 1,
+   "why": "The bookbinder has loyal but silent customers, so a low score may come from a lack of reviews. The passage gives no evidence about dissatisfaction or prices."
+  },
+  {
+   "type": "vocabulary in context",
+   "q": "What does \"neutral\" mean in \"a number is not neutral merely because it is precise\"?",
+   "o": [
+    "Simple enough for residents to understand quickly.",
+    "Costly for the council to collect regularly.",
+    "Harmless to the shops that it describes.",
+    "Unaffected by the choices that produce it."
+   ],
+   "a": 3,
+   "why": "The shopkeeper says a number still reflects what people chose to report, so it is not free of the choices behind it, however precise it looks."
+  },
+  {
+   "type": "tone or purpose",
+   "q": "Which description best fits the author's approach?",
+   "o": [
+    "Dismissive, treating the app as a failed experiment.",
+    "Enthusiastic, promoting ratings as the future of shopping.",
+    "Balanced, weighing the benefits of ratings against their limits.",
+    "Anxious, warning that main street shops are about to close."
+   ],
+   "a": 2,
+   "why": "The author gives the council member's case and the shopkeeper's reply, then notes a modest change. The passage neither rejects nor celebrates the app."
+  }
+ ],
+ "tips": {
+  "main idea": "Say the whole passage in one sentence before reading the options. Reject options that cover only one part, overstate, or blame.",
+  "inference": "Separate what the evidence supports from what it leaves unknown. Test each option against the passage.",
+  "tone or purpose": "Underline words that show attitude. Ask what the author wants the reader to understand or feel at the end.",
+  "vocabulary in context": "Read the sentence around the word, guess a meaning, then test each option in the sentence.",
+  "detail": "Find the exact sentence that answers the question, then check that the option matches it, not just something similar."
+ }
+};
+var letters = ["A","B","C","D"];
+document.getElementById("mid").textContent = TEST.id;
+document.getElementById("mtopic").textContent = TEST.topic;
+document.getElementById("mdiff").textContent = TEST.difficulty;
+document.getElementById("mwords").textContent = document.getElementById("passage").innerText.trim().split(/\s+/).length;
+var qs = document.getElementById("questions");
+TEST.questions.forEach(function(q, i){
+  var d = document.createElement("div"); d.className = "q"; d.id = "q"+i;
+  var h = '<p>'+(i+1)+'. '+q.q+' <span class="qtype">('+q.type+')</span></p>';
+  q.o.forEach(function(opt, j){
+    h += '<label><input type="radio" name="q'+i+'" value="'+j+'"> '+letters[j]+'. '+opt+'</label>';
+  });
+  h += '<div class="fb" id="fb'+i+'"></div>';
+  d.innerHTML = h; qs.appendChild(d);
+});
+function submitQuiz(){
+  var picks = [];
+  for (var i=0;i<TEST.questions.length;i++){
+    var c = document.querySelector('input[name="q'+i+'"]:checked');
+    picks.push(c ? parseInt(c.value,10) : -1);
+  }
+  if (picks.indexOf(-1) !== -1){
+    document.getElementById("warn").textContent = "Please answer every question before submitting.";
+    return;
+  }
+  document.getElementById("warn").textContent = "";
+  var score = 0, wrongTypes = [], codeAns = "";
+  TEST.questions.forEach(function(q,i){
+    var box = document.getElementById("q"+i), fb = document.getElementById("fb"+i);
+    var right = picks[i] === q.a;
+    if (right) score++; else wrongTypes.push(q.type);
+    box.className = "q " + (right ? "ok" : "bad");
+    fb.innerHTML = (right ? "Correct. " : "Not quite. Your answer: "+letters[picks[i]]+". Correct answer: "+letters[q.a]+". ") + q.why;
+    codeAns += letters[picks[i]];
+    var radios = document.getElementsByName("q"+i);
+    for (var k=0;k<radios.length;k++) radios[k].disabled = true;
+  });
+  document.getElementById("submit").disabled = true;
+  document.getElementById("score").textContent = "Score: "+score+" / "+TEST.questions.length;
+  var reco = document.getElementById("reco");
+  if (wrongTypes.length === 0){
+    reco.innerHTML = "<li>All correct. Next time try a harder article or a new topic.</li>";
+  } else {
+    var seen = {};
+    wrongTypes.forEach(function(t){
+      if (!seen[t]){ seen[t]=1; var li=document.createElement("li"); li.textContent = t+": "+TEST.tips[t]; reco.appendChild(li); }
+    });
+  }
+  var today = new Date().toISOString().slice(0,10);
+  document.getElementById("code").value = TEST.id+"|"+TEST.topic+"|"+TEST.difficulty+"|"+score+"/"+TEST.questions.length+"|"+codeAns+"|"+today;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").scrollIntoView();
+}
+function copyCode(){
+  var el=document.getElementById("code"), msg=document.getElementById("copied");
+  function ok(){msg.textContent="Copied. Paste it in your chat.";}
+  function fallback(){el.select();el.setSelectionRange(0,99999);try{document.execCommand("copy")?ok():msg.textContent="Could not copy. Select the code and copy it by hand.";}catch(e){msg.textContent="Could not copy. Select the code and copy it by hand.";}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el.value).then(ok,fallback);}else{fallback();}
+}
+</script>
+</body>
+</html>
