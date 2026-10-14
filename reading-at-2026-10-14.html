@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading practice 021h: The notebook at Hollin Farm</title>
+<style>
+body{font-family:Georgia,serif;max-width:760px;margin:0 auto;padding:16px;line-height:1.6;color:#222;background:#fafafa}
+h1{font-size:1.5rem;margin-bottom:4px}
+.meta{font-family:Arial,sans-serif;font-size:.85rem;background:#eef3f8;border:1px solid #cdd9e5;border-radius:6px;padding:10px;margin:10px 0 20px}
+.meta span{display:inline-block;margin-right:14px}
+.passage{background:#fff;border:1px solid #ddd;border-radius:6px;padding:4px 18px}
+.q{font-family:Arial,sans-serif;background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:bold}
+.q label{display:block;padding:4px 0;cursor:pointer}
+.qtype{font-weight:normal;font-size:.8rem;color:#567}
+button{font-size:1rem;padding:10px 22px;border:0;border-radius:6px;background:#1f5fa8;color:#fff;cursor:pointer}
+button:disabled{background:#999}
+.ok{border-left:6px solid #2e8b57}
+.bad{border-left:6px solid #c0392b}
+.fb{font-family:Arial,sans-serif;font-size:.92rem;margin-top:8px}
+#result{font-family:Arial,sans-serif;display:none;margin-top:20px}
+#code{width:100%;box-sizing:border-box;font-family:monospace;padding:8px}
+.note{font-family:Arial,sans-serif;font-size:.8rem;color:#555}
+</style>
+</head>
+<body>
+<h1>The notebook at Hollin Farm</h1>
+<div class="meta" id="meta">
+<span><b>Test ID:</b> <span id="mid"></span></span>
+<span><b>Topic:</b> <span id="mtopic"></span></span>
+<span><b>Editorial difficulty:</b> <span id="mdiff"></span> (a guess before reading, not a measured level)</span><br>
+<span><b>Words:</b> <span id="mwords"></span></span>
+<span><b>Reading time:</b> about 2 minutes</span><br>
+<span><b>Source:</b> original passage written for practice, so full text is included.</span>
+</div>
+
+<div class="passage" id="passage">
+<p>For forty years, Desmond Hale walked to the same fence post at Hollin Farm each morning to read a copper rain gauge and write the number in a green notebook. Nobody had asked him to. The village now had a modern weather station on the school roof, which sent its readings to a computer every ten minutes, and most neighbours assumed his habit was a hobby that had outlived its use.</p>
+<p>Then the school's sensor began to drift. A technician found that its rain totals had crept upward, a little more each year, although no single reading looked wrong. It was Hale's notebook that exposed the fault. When the school's figures were laid beside his, the two agreed for the first ten years and then slowly parted, like two walkers who start in step but take slightly different strides.</p>
+<p>The council was quick to praise the notebook, but Hale was uncomfortable with the attention. He pointed out that his gauge stood beside a hedge that had grown taller over the years, which probably made his totals a little low in recent winters. "A record is only as honest as its notes," he said, and he began adding a line about the hedge to his entries. Some villagers found the remark fussy. Priya Nandan, a retired engineer, thought it was the most useful sentence in the book.</p>
+<p>The council now plans to retire the notebook and rely on the sensor alone, once it has been repaired. Hale does not object, but he has asked that the old pages be kept. The sensor, he says, is excellent at telling you what the rain did, and a notebook is better at telling you what else was happening around it. The council has not yet answered his request.</p>
+</div>
+
+<form id="quiz" onsubmit="return false">
+<div id="questions"></div>
+<button id="submit" type="button" onclick="submitQuiz()">Submit answers</button>
+<p class="note" id="warn"></p>
+</form>
+
+<div id="result">
+<h2 id="score"></h2>
+<div id="review"></div>
+<h3>What to practise next</h3>
+<ul id="reco"></ul>
+<h3>Results code</h3>
+<p class="note">This page does not save anything and does not send anything anywhere. Press Copy result code (or select it) and paste it into your own Instinct chat so the result can be recorded.</p>
+<input id="code" readonly onclick="this.select()">
+<button id="copybtn" type="button" onclick="copyCode()">Copy result code</button> <span id="copied" class="note"></span>
+</div>
+
+<script>
+// Answer key is inside this file on purpose (practice use). Anyone can read it in the page source.
+var TEST = {
+ "id": "VA-021h",
+ "topic": "science",
+ "difficulty": "medium-hard",
+ "questions": [
+  {
+   "type": "main idea",
+   "q": "Which statement best expresses the central point of the passage?",
+   "o": [
+    "Weather sensors should be replaced by hand-kept notebooks everywhere.",
+    "A patient personal record can catch a fault that machines hide.",
+    "Hedges near a gauge are the main cause of wrong rainfall data.",
+    "Village councils spend too much on equipment that rarely works."
+   ],
+   "a": 1,
+   "why": "The notebook revealed a fault that no single sensor reading showed, and Hale's notes explain the limits of his own record. The passage does not say sensors should be dropped, that hedges are the main cause of error, or that councils overspend."
+  },
+  {
+   "type": "detail",
+   "q": "What did the technician find about the school sensor?",
+   "o": [
+    "Its rain totals crept upward a little more each year.",
+    "It stopped sending readings to the computer every winter.",
+    "It had been placed too close to the old village hedge.",
+    "It had agreed with the notebook for all forty years."
+   ],
+   "a": 0,
+   "why": "The second paragraph says the totals had crept upward, a little more each year. The sensor agreed with the notebook only for the first ten years, and the hedge stands beside Hale's gauge, not the sensor."
+  },
+  {
+   "type": "tone or purpose",
+   "q": "Why does the author include Hale's remark about the hedge?",
+   "o": [
+    "To suggest that his notebook was too unreliable to keep.",
+    "To explain why the council ignored his records for decades.",
+    "To show that he was annoyed by the praise he received.",
+    "To show he was open about the limits of his own record."
+   ],
+   "a": 3,
+   "why": "Hale admits his totals may be slightly low and adds notes about the hedge, which shows honesty about his own record. The passage does not call the notebook unreliable, say the council ignored it, or describe him as annoyed."
+  },
+  {
+   "type": "vocabulary in context",
+   "q": "What does \"fussy\" mean in \"Some villagers found the remark fussy\"?",
+   "o": [
+    "Sad in a quiet way about a mistake made long ago.",
+    "Rude in a way that is meant to hurt other people.",
+    "Too concerned about small details of little value.",
+    "Eager to hurry through a job without taking any care."
+   ],
+   "a": 2,
+   "why": "The villagers thought a note about a hedge was a tiny matter to dwell on, so 'fussy' means too concerned with small details. The other meanings do not fit the sentence."
+  },
+  {
+   "type": "inference",
+   "q": "Which finding would most weaken Hale's explanation for his low recent totals?",
+   "o": [
+    "A nearby gauge in an open field showed the same low totals.",
+    "The hedge had grown taller faster than anyone had expected.",
+    "Hale's totals matched the school's during the first decade.",
+    "Gauges beside tall hedges elsewhere usually record less rain."
+   ],
+   "a": 0,
+   "why": "Hale blames the hedge for the low totals. If a gauge with no hedge beside it shows the same low totals, the hedge is probably not the cause. The other findings fit his explanation or say nothing about the recent totals."
+  }
+ ],
+ "tips": {
+  "main idea": "Say the whole passage in one sentence before reading the options. Reject options that cover only one part, overstate, or blame.",
+  "inference": "Separate what the evidence supports from what it leaves unknown. Test each option against the passage.",
+  "tone or purpose": "Underline words that show attitude. Ask what the author wants the reader to understand or feel at the end.",
+  "vocabulary in context": "Read the sentence around the word, guess a meaning, then test each option in the sentence.",
+  "detail": "Find the exact sentence that answers the question, then check that the option matches it, not just something similar."
+ }
+};
+var letters = ["A","B","C","D"];
+document.getElementById("mid").textContent = TEST.id;
+document.getElementById("mtopic").textContent = TEST.topic;
+document.getElementById("mdiff").textContent = TEST.difficulty;
+document.getElementById("mwords").textContent = document.getElementById("passage").innerText.trim().split(/\s+/).length;
+var qs = document.getElementById("questions");
+TEST.questions.forEach(function(q, i){
+  var d = document.createElement("div"); d.className = "q"; d.id = "q"+i;
+  var h = '<p>'+(i+1)+'. '+q.q+' <span class="qtype">('+q.type+')</span></p>';
+  q.o.forEach(function(opt, j){
+    h += '<label><input type="radio" name="q'+i+'" value="'+j+'"> '+letters[j]+'. '+opt+'</label>';
+  });
+  h += '<div class="fb" id="fb'+i+'"></div>';
+  d.innerHTML = h; qs.appendChild(d);
+});
+function submitQuiz(){
+  var picks = [];
+  for (var i=0;i<TEST.questions.length;i++){
+    var c = document.querySelector('input[name="q'+i+'"]:checked');
+    picks.push(c ? parseInt(c.value,10) : -1);
+  }
+  if (picks.indexOf(-1) !== -1){
+    document.getElementById("warn").textContent = "Please answer every question before submitting.";
+    return;
+  }
+  document.getElementById("warn").textContent = "";
+  var score = 0, wrongTypes = [], codeAns = "";
+  TEST.questions.forEach(function(q,i){
+    var box = document.getElementById("q"+i), fb = document.getElementById("fb"+i);
+    var right = picks[i] === q.a;
+    if (right) score++; else wrongTypes.push(q.type);
+    box.className = "q " + (right ? "ok" : "bad");
+    fb.innerHTML = (right ? "Correct. " : "Not quite. Your answer: "+letters[picks[i]]+". Correct answer: "+letters[q.a]+". ") + q.why;
+    codeAns += letters[picks[i]];
+    var radios = document.getElementsByName("q"+i);
+    for (var k=0;k<radios.length;k++) radios[k].disabled = true;
+  });
+  document.getElementById("submit").disabled = true;
+  document.getElementById("score").textContent = "Score: "+score+" / "+TEST.questions.length;
+  var reco = document.getElementById("reco");
+  if (wrongTypes.length === 0){
+    reco.innerHTML = "<li>All correct. Next time try a harder article or a new topic.</li>";
+  } else {
+    var seen = {};
+    wrongTypes.forEach(function(t){
+      if (!seen[t]){ seen[t]=1; var li=document.createElement("li"); li.textContent = t+": "+TEST.tips[t]; reco.appendChild(li); }
+    });
+  }
+  var today = new Date().toISOString().slice(0,10);
+  document.getElementById("code").value = TEST.id+"|"+TEST.topic+"|"+TEST.difficulty+"|"+score+"/"+TEST.questions.length+"|"+codeAns+"|"+today;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").scrollIntoView();
+}
+function copyCode(){
+  var el=document.getElementById("code"), msg=document.getElementById("copied");
+  function ok(){msg.textContent="Copied. Paste it in your chat.";}
+  function fallback(){el.select();el.setSelectionRange(0,99999);try{document.execCommand("copy")?ok():msg.textContent="Could not copy. Select the code and copy it by hand.";}catch(e){msg.textContent="Could not copy. Select the code and copy it by hand.";}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el.value).then(ok,fallback);}else{fallback();}
+}
+</script>
+</body>
+</html>
