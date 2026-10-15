@@ -20,7 +20,7 @@ button:disabled{background:#999}
 .bad{border-left:6px solid #c0392b}
 .fb{font-family:Arial,sans-serif;font-size:.92rem;margin-top:8px}
 #result{font-family:Arial,sans-serif;display:none;margin-top:20px}
-#code{width:100%;box-sizing:border-box;font-family:monospace;padding:8px}
+#code{width:100%;box-sizing:border-box;font-family:monospace;padding:8px;resize:none;word-break:break-all;overflow-wrap:anywhere;white-space:pre-wrap}
 .note{font-family:Arial,sans-serif;font-size:.8rem;color:#555}
 </style>
 </head>
@@ -55,7 +55,7 @@ button:disabled{background:#999}
 <ul id="reco"></ul>
 <h3>Results code</h3>
 <p class="note">This page does not save anything and does not send anything anywhere. Press Copy result code (or select it) and paste it into your own Instinct chat so the result can be recorded.</p>
-<input id="code" readonly onclick="this.select()">
+<textarea id="code" rows="2" readonly onclick="this.select()"></textarea>
 <button id="copybtn" type="button" onclick="copyCode()">Copy result code</button> <span id="copied" class="note"></span>
 </div>
 
@@ -115,7 +115,7 @@ var TEST = {
    "why": "She points to the replicas as the cause of the busy summer, so 'credits' means to say something is the reason for it. The other meanings do not fit her statement about attendance."
   },
   {
-   "type": "inference",
+   "type": "weaken",
    "q": "Which finding would most weaken Ormerod's claim that the replicas explain the busiest summer?",
    "o": [
     "Children who tried the replicas said they enjoyed their visit.",
@@ -129,6 +129,7 @@ var TEST = {
  ],
  "tips": {
   "main idea": "Say the whole passage in one sentence before reading the options. Reject options that cover only one part, overstate, or blame.",
+  "weaken": "Ask what new fact would make the claim less likely. The right option offers another cause or counter-evidence, while wrong options agree with the claim or are off topic.",
   "inference": "Separate what the evidence supports from what it leaves unknown. Test each option against the passage.",
   "tone or purpose": "Underline words that show attitude. Ask what the author wants the reader to understand or feel at the end.",
   "vocabulary in context": "Read the sentence around the word, guess a meaning, then test each option in the sentence.",
