@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading practice 023h: The explaining game</title>
+<style>
+body{font-family:Georgia,serif;max-width:760px;margin:0 auto;padding:16px;line-height:1.6;color:#222;background:#fafafa}
+h1{font-size:1.5rem;margin-bottom:4px}
+.meta{font-family:Arial,sans-serif;font-size:.85rem;background:#eef3f8;border:1px solid #cdd9e5;border-radius:6px;padding:10px;margin:10px 0 20px}
+.meta span{display:inline-block;margin-right:14px}
+.passage{background:#fff;border:1px solid #ddd;border-radius:6px;padding:4px 18px}
+.q{font-family:Arial,sans-serif;background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:bold}
+.q label{display:block;padding:4px 0;cursor:pointer}
+.qtype{font-weight:normal;font-size:.8rem;color:#567}
+button{font-size:1rem;padding:10px 22px;border:0;border-radius:6px;background:#1f5fa8;color:#fff;cursor:pointer}
+button:disabled{background:#999}
+.ok{border-left:6px solid #2e8b57}
+.bad{border-left:6px solid #c0392b}
+.fb{font-family:Arial,sans-serif;font-size:.92rem;margin-top:8px}
+#result{font-family:Arial,sans-serif;display:none;margin-top:20px}
+#code{width:100%;box-sizing:border-box;font-family:monospace;padding:8px;resize:none;word-break:break-all;overflow-wrap:anywhere;white-space:pre-wrap}
+.note{font-family:Arial,sans-serif;font-size:.8rem;color:#555}
+</style>
+</head>
+<body>
+<h1>The explaining game</h1>
+<div class="meta" id="meta">
+<span><b>Test ID:</b> <span id="mid"></span></span>
+<span><b>Topic:</b> <span id="mtopic"></span></span>
+<span><b>Editorial difficulty:</b> <span id="mdiff"></span> (a guess before reading, not a measured level)</span><br>
+<span><b>Words:</b> <span id="mwords"></span></span>
+<span><b>Reading time:</b> about 2 minutes</span><br>
+<span><b>Source:</b> original passage written for practice, so full text is included.</span>
+</div>
+
+<div class="passage" id="passage">
+<p>Three years ago, Mira Sethi, who runs a small tuition centre in Keston, changed how her evening classes end. Before anyone opens a homework book, students pair up for what she calls the explaining game: each student must explain the day's main idea to a partner in their own words, and the partner must ask one question about it. The game takes ten loud minutes. Sethi says it is the best change she has ever made.</p>
+<p>Her reason is simple. 'You cannot mumble an explanation,' she says. 'The moment you say an idea aloud, you find out whether you understand it or only nodded along.' She keeps a wall chart of the centre's average test scores, which rose from 61 to 74 over the three years since the game began.</p>
+<p>Not everyone is convinced the game deserves the credit. Rohit Malhotra, whose son attends the centre, points out that Sethi also shortened the homework in the same year. He adds that the keenest students throw themselves into the game anyway, so the rise may reflect who the students are, and what else changed, rather than the explaining.</p>
+<p>Sethi concedes she has not separated the causes, though she still believes the game helps. She also does not claim it suits every subject. When she tried it in the drawing class, where students learn by watching and copying, the explaining felt forced, and she dropped it after a month. 'Words help with words,' she says. 'A line is harder to talk about.'</p>
+<p>The centre's owners now want the game in the younger children's classes as well. Sethi is hesitant. Younger children, she worries, may copy a partner's mistake with total confidence, and a wrong idea said aloud can be harder to forget. She has agreed to a trial with one class for a term, but not to a centre-wide roll-out. 'If it helps, we will know soon enough,' she says. 'If it only feels nice, I would rather know that too.'</p>
+</div>
+
+<form id="quiz" onsubmit="return false">
+<div id="questions"></div>
+<button id="submit" type="button" onclick="submitQuiz()">Submit answers</button>
+<p class="note" id="warn"></p>
+</form>
+
+<div id="result">
+<h2 id="score"></h2>
+<div id="review"></div>
+<h3>What to practise next</h3>
+<ul id="reco"></ul>
+<h3>Results code</h3>
+<p class="note">This page does not save anything and does not send anything anywhere. Press Copy result code (or select it) and paste it into your own Instinct chat so the result can be recorded.</p>
+<textarea id="code" rows="2" readonly onclick="this.select()"></textarea>
+<button id="copybtn" type="button" onclick="copyCode()">Copy result code</button> <span id="copied" class="note"></span>
+</div>
+
+<script>
+// Answer key is inside this file on purpose (practice use). Anyone can read it in the page source.
+var TEST = {
+  "id": "VA-023h",
+  "topic": "psychology",
+  "difficulty": "medium-hard",
+  "questions": [
+    {
+      "type": "main idea",
+      "q": "Which statement best expresses the central point of the passage?",
+      "o": [
+        "A popular study game shows promise, but its cause and wider use stay untested.",
+        "Explaining ideas to classmates is the single best way for every student to learn.",
+        "Tuition centres should replace written homework with paired explaining sessions.",
+        "Parents are right to distrust any rise in scores that a tutor reports."
+      ],
+      "a": 0,
+      "why": "The passage presents a popular game, a claimed rise in scores, and open questions about the cause and about use with younger children. It does not call the game the best way for everyone, argue for replacing homework, or side with distrusting parents."
+    },
+    {
+      "type": "detail",
+      "q": "According to Malhotra, what else changed at the centre in the year the game began?",
+      "o": [
+        "The centre opened a second branch across town.",
+        "The centre shortened the homework it gave students.",
+        "The centre hired new tutors for its youngest classes.",
+        "The centre raised its fees for the first time in years."
+      ],
+      "a": 1,
+      "why": "In the third paragraph Malhotra points out that Sethi also shortened the homework in the same year. The other changes are never mentioned."
+    },
+    {
+      "type": "tone or purpose",
+      "q": "Why does the author mention that the explaining 'felt forced' in the drawing class?",
+      "o": [
+        "To show that Sethi intends to end the game in every subject soon.",
+        "To explain why drawing scores have fallen behind the other scores.",
+        "To suggest that parents asked for the game to be stopped there.",
+        "To show that Sethi does not claim the game suits every subject."
+      ],
+      "a": 3,
+      "why": "The drawing-class example follows her statement that the game does not suit every subject, so it shows a limit she accepts. It does not announce an end to the game, compare scores, or mention parents."
+    },
+    {
+      "type": "vocabulary in context",
+      "q": "What does \"concedes\" mean in \"Sethi concedes she has not separated the causes\"?",
+      "o": [
+        "Announces proudly that all the work is done.",
+        "Proves the point with careful figures.",
+        "Admits the point while keeping her view.",
+        "Promises the parents she will fix it."
+      ],
+      "a": 2,
+      "why": "She admits she has not separated the causes while still believing the game helps, so 'concedes' means to admit a point while keeping her view. The other meanings do not fit."
+    },
+    {
+      "type": "weaken",
+      "q": "Which finding would most weaken Sethi's claim that the explaining game caused the rise in scores?",
+      "o": [
+        "Many students say they enjoy the game and ask for it to continue every week.",
+        "Her wall chart shows the average score rising steadily over the three years.",
+        "The centre already plans to trial the game with one younger class for a full term.",
+        "That year the centre also began selecting students by a harder entrance test."
+      ],
+      "a": 3,
+      "why": "Her claim is that the game caused the rise. If the centre began selecting students through a harder entrance test that year, the rise may come from abler new students instead. The other findings agree with her claim, restate the rise, or concern future plans, not the cause of the rise."
+    }
+  ],
+  "tips": {
+    "main idea": "Say the whole passage in one sentence before reading the options. Reject options that cover only one part, overstate, or blame.",
+    "weaken": "Ask what new fact would make the claim less likely. The right option offers another cause or counter-evidence, while wrong options agree with the claim or are off topic.",
+    "inference": "Separate what the evidence supports from what it leaves unknown. Test each option against the passage.",
+    "tone or purpose": "Underline words that show attitude. Ask what the author wants the reader to understand or feel at the end.",
+    "vocabulary in context": "Read the sentence around the word, guess a meaning, then test each option in the sentence.",
+    "detail": "Find the exact sentence that answers the question, then check that the option matches it, not just something similar."
+  }
+};
+var letters = ["A","B","C","D"];
+document.getElementById("mid").textContent = TEST.id;
+document.getElementById("mtopic").textContent = TEST.topic;
+document.getElementById("mdiff").textContent = TEST.difficulty;
+document.getElementById("mwords").textContent = document.getElementById("passage").innerText.trim().split(/\s+/).length;
+var qs = document.getElementById("questions");
+TEST.questions.forEach(function(q, i){
+  var d = document.createElement("div"); d.className = "q"; d.id = "q"+i;
+  var h = '<p>'+(i+1)+'. '+q.q+' <span class="qtype">('+q.type+')</span></p>';
+  q.o.forEach(function(opt, j){
+    h += '<label><input type="radio" name="q'+i+'" value="'+j+'"> '+letters[j]+'. '+opt+'</label>';
+  });
+  h += '<div class="fb" id="fb'+i+'"></div>';
+  d.innerHTML = h; qs.appendChild(d);
+});
+function submitQuiz(){
+  var picks = [];
+  for (var i=0;i<TEST.questions.length;i++){
+    var c = document.querySelector('input[name="q'+i+'"]:checked');
+    picks.push(c ? parseInt(c.value,10) : -1);
+  }
+  if (picks.indexOf(-1) !== -1){
+    document.getElementById("warn").textContent = "Please answer every question before submitting.";
+    return;
+  }
+  document.getElementById("warn").textContent = "";
+  var score = 0, wrongTypes = [], codeAns = "";
+  TEST.questions.forEach(function(q,i){
+    var box = document.getElementById("q"+i), fb = document.getElementById("fb"+i);
+    var right = picks[i] === q.a;
+    if (right) score++; else wrongTypes.push(q.type);
+    box.className = "q " + (right ? "ok" : "bad");
+    fb.innerHTML = (right ? "Correct. " : "Not quite. Your answer: "+letters[picks[i]]+". Correct answer: "+letters[q.a]+". ") + q.why;
+    codeAns += letters[picks[i]];
+    var radios = document.getElementsByName("q"+i);
+    for (var k=0;k<radios.length;k++) radios[k].disabled = true;
+  });
+  document.getElementById("submit").disabled = true;
+  document.getElementById("score").textContent = "Score: "+score+" / "+TEST.questions.length;
+  var reco = document.getElementById("reco");
+  if (wrongTypes.length === 0){
+    reco.innerHTML = "<li>All correct. Next time try a harder article or a new topic.</li>";
+  } else {
+    var seen = {};
+    wrongTypes.forEach(function(t){
+      if (!seen[t]){ seen[t]=1; var li=document.createElement("li"); li.textContent = t+": "+TEST.tips[t]; reco.appendChild(li); }
+    });
+  }
+  var today = new Date().toISOString().slice(0,10);
+  document.getElementById("code").value = TEST.id+"|"+TEST.topic+"|"+TEST.difficulty+"|"+score+"/"+TEST.questions.length+"|"+codeAns+"|"+today;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").scrollIntoView();
+}
+function copyCode(){
+  var el=document.getElementById("code"), msg=document.getElementById("copied");
+  function ok(){msg.textContent="Copied. Paste it in your chat.";}
+  function fallback(){el.select();el.setSelectionRange(0,99999);try{document.execCommand("copy")?ok():msg.textContent="Could not copy. Select the code and copy it by hand.";}catch(e){msg.textContent="Could not copy. Select the code and copy it by hand.";}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el.value).then(ok,fallback);}else{fallback();}
+}
+</script>
+</body>
+</html>
