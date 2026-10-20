@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Reading practice 024h: The banyan and the bypass</title>
+<style>
+body{font-family:Georgia,serif;max-width:760px;margin:0 auto;padding:16px;line-height:1.6;color:#222;background:#fafafa}
+h1{font-size:1.5rem;margin-bottom:4px}
+.meta{font-family:Arial,sans-serif;font-size:.85rem;background:#eef3f8;border:1px solid #cdd9e5;border-radius:6px;padding:10px;margin:10px 0 20px}
+.meta span{display:inline-block;margin-right:14px}
+.passage{background:#fff;border:1px solid #ddd;border-radius:6px;padding:4px 18px}
+.q{font-family:Arial,sans-serif;background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:bold}
+.q label{display:block;padding:4px 0;cursor:pointer}
+.qtype{font-weight:normal;font-size:.8rem;color:#567}
+button{font-size:1rem;padding:10px 22px;border:0;border-radius:6px;background:#1f5fa8;color:#fff;cursor:pointer}
+button:disabled{background:#999}
+.ok{border-left:6px solid #2e8b57}
+.bad{border-left:6px solid #c0392b}
+.fb{font-family:Arial,sans-serif;font-size:.92rem;margin-top:8px}
+#result{font-family:Arial,sans-serif;display:none;margin-top:20px}
+#code{width:100%;box-sizing:border-box;font-family:monospace;padding:8px;resize:none;word-break:break-all;overflow-wrap:anywhere;white-space:pre-wrap}
+.note{font-family:Arial,sans-serif;font-size:.8rem;color:#555}
+</style>
+</head>
+<body>
+<h1>The banyan and the bypass</h1>
+<div class="meta" id="meta">
+<span><b>Test ID:</b> <span id="mid"></span></span>
+<span><b>Topic:</b> <span id="mtopic"></span></span>
+<span><b>Editorial difficulty:</b> <span id="mdiff"></span> (a guess before reading, not a measured level)</span><br>
+<span><b>Words:</b> <span id="mwords"></span></span>
+<span><b>Reading time:</b> about 2 minutes</span><br>
+<span><b>Source:</b> original passage written for practice, so full text is included.</span>
+</div>
+
+<div class="passage" id="passage">
+<p>The town of Kherwadi grew around its bus stand, and the bus stand grew around a banyan. The tree is older than the road, older than most of the shops, and wide enough for three auto-rickshaws to wait in its shade. Now the district wants to widen the road into a bypass, and the banyan stands exactly where the new lane must go. The council has proposed moving the tree rather than cutting it down.</p>
+<p>Meena D'Souza, the engineer in charge, believes the move can succeed. At a public meeting she presented a modest file: records of three roadside banyans in neighbouring districts that were dug up, trucked to new pits and are alive today. 'The method works,' she said. Her team would trim the roots over two months and water the new pit through two summers. She promised careful work, not miracles.</p>
+<p>Raghunath Kibe, a retired forest officer who walks to the bus stand every morning, is unconvinced. The trees in her file, he points out, were young; no one in it moved a giant whose trunk four men cannot circle. He speaks of the owlets nesting in the hollow near the first fork, and of mango crates that stay cool under the canopy through May. 'A moved tree is a planted tree,' he says. 'You can plant the log, but not the life around it.'</p>
+<p>The quarrel has split the town curiously. Nearly everyone wants the road, and nearly everyone wants the tree; the dispute is over what should count as proof. D'Souza trusts her file because it can be measured. Kibe trusts his mornings. The school has joined in: students keep a weekly diary of the banyan, counting nests and pacing out the shade at noon, so the council's decision, due next month, might rest on something observed under this tree and not only reported from elsewhere.</p>
+<p>Whatever the council decides, the banyan has already changed how Kherwadi argues: at the last meeting, both sides quoted the students' diary.</p>
+</div>
+
+<form id="quiz" onsubmit="return false">
+<div id="questions"></div>
+<button id="submit" type="button" onclick="submitQuiz()">Submit answers</button>
+<p class="note" id="warn"></p>
+</form>
+
+<div id="result">
+<h2 id="score"></h2>
+<div id="review"></div>
+<h3>What to practise next</h3>
+<ul id="reco"></ul>
+<h3>Results code</h3>
+<p class="note">This page does not save anything and does not send anything anywhere. Press Copy result code (or select it) and paste it into your own Instinct chat so the result can be recorded.</p>
+<textarea id="code" rows="2" readonly onclick="this.select()"></textarea>
+<button id="copybtn" type="button" onclick="copyCode()">Copy result code</button> <span id="copied" class="note"></span>
+</div>
+
+<script>
+// Answer key is inside this file on purpose (practice use). Anyone can read it in the page source.
+var TEST = {
+  "id": "VA-024h",
+  "topic": "environment",
+  "difficulty": "medium-hard",
+  "questions": [
+    {
+      "type": "main idea",
+      "q": "Which statement best expresses the central point of the passage?",
+      "o": [
+        "The council has decided to move the banyan despite strong public opposition to the plan.",
+        "Old banyans almost never survive being moved, so this one will have to be cut.",
+        "The quarrel is now about what counts as proof: outside records or life under this tree.",
+        "Engineers and retired forest officers will always disagree about new road projects."
+      ],
+      "a": 2,
+      "why": "The passage ends on evidence: D'Souza's file against what can be observed under this tree. No decision has been taken, the passage never claims old trees cannot be moved, and the disagreement is specific to Kherwadi, not a rule about professions."
+    },
+    {
+      "type": "detail",
+      "q": "What does Kibe point out about the three trees in D'Souza's file?",
+      "o": [
+        "They were all cut down within a year of being moved to new pits.",
+        "They were young, nothing like a trunk four men cannot circle.",
+        "They were moved in haste, without any trimming of their roots.",
+        "They grew in districts where no bypass was ever planned."
+      ],
+      "a": 1,
+      "why": "His objection is that the file's trees were young compared with Kherwadi's giant. The passage says nothing about them being cut down, moved without root-trimming, or standing where no bypass was planned."
+    },
+    {
+      "type": "tone or purpose",
+      "q": "Why does the author describe the students keeping a weekly diary of the banyan?",
+      "o": [
+        "To show the town beginning to rely on observation of this tree, not outside records.",
+        "To suggest that the school has already taken Kibe's side in the quarrel over the bypass.",
+        "To show that schoolchildren notice trees more carefully than any engineer can.",
+        "To imply that the diary will be finished too late to influence next month's decision."
+      ],
+      "a": 0,
+      "why": "The diary is introduced so the decision might rest on something observed under this tree rather than only reported from elsewhere. The school is not said to oppose the bypass, children are not ranked above engineers, and the diary runs before next month's decision."
+    },
+    {
+      "type": "vocabulary in context",
+      "q": "In 'she presented a modest file', what does 'modest' mean?",
+      "o": [
+        "Humble about the part she played in preparing it.",
+        "Cheap, because the council refused to fund a larger study.",
+        "Carefully bound, with a page for each transplanted tree.",
+        "Small in size and making no claim to completeness."
+      ],
+      "a": 3,
+      "why": "A modest file is a small one: three cases, no claim to completeness. The word describes the file's size here, not her humility, its cost, or its binding."
+    },
+    {
+      "type": "weaken",
+      "q": "Which finding would most weaken D'Souza's case that the banyan can be moved safely?",
+      "o": [
+        "Moving a large tree costs several times more than cutting it and planting a new one.",
+        "In a fourth district, a transplanted banyan over sixty years old died within two monsoons.",
+        "During one of the three moves she cites, the nesting birds left and did not return that season.",
+        "Many residents say they would miss the shade more than they want the new lane."
+      ],
+      "a": 1,
+      "why": "Her case rests on successful moves; an older banyan dying after a move is direct counter-evidence for a tree like this one. Cost, one season of missing birds, and residents' attachment do not bear on whether the tree survives."
+    }
+  ],
+  "tips": {
+    "main idea": "Say the whole passage in one sentence before reading the options. Reject options that cover only one part, overstate, or blame.",
+    "weaken": "Ask what new fact would make the claim less likely. The right option offers another cause or counter-evidence, while wrong options agree with the claim or are off topic.",
+    "inference": "Separate what the evidence supports from what it leaves unknown. Test each option against the passage.",
+    "tone or purpose": "Underline words that show attitude. Ask what the author wants the reader to understand or feel at the end.",
+    "vocabulary in context": "Read the sentence around the word, guess a meaning, then test each option in the sentence.",
+    "detail": "Find the exact sentence that answers the question, then check that the option matches it, not just something similar."
+  }
+};
+var letters = ["A","B","C","D"];
+document.getElementById("mid").textContent = TEST.id;
+document.getElementById("mtopic").textContent = TEST.topic;
+document.getElementById("mdiff").textContent = TEST.difficulty;
+document.getElementById("mwords").textContent = document.getElementById("passage").innerText.trim().split(/\s+/).length;
+var qs = document.getElementById("questions");
+TEST.questions.forEach(function(q, i){
+  var d = document.createElement("div"); d.className = "q"; d.id = "q"+i;
+  var h = '<p>'+(i+1)+'. '+q.q+' <span class="qtype">('+q.type+')</span></p>';
+  q.o.forEach(function(opt, j){
+    h += '<label><input type="radio" name="q'+i+'" value="'+j+'"> '+letters[j]+'. '+opt+'</label>';
+  });
+  h += '<div class="fb" id="fb'+i+'"></div>';
+  d.innerHTML = h; qs.appendChild(d);
+});
+function submitQuiz(){
+  var picks = [];
+  for (var i=0;i<TEST.questions.length;i++){
+    var c = document.querySelector('input[name="q'+i+'"]:checked');
+    picks.push(c ? parseInt(c.value,10) : -1);
+  }
+  if (picks.indexOf(-1) !== -1){
+    document.getElementById("warn").textContent = "Please answer every question before submitting.";
+    return;
+  }
+  document.getElementById("warn").textContent = "";
+  var score = 0, wrongTypes = [], codeAns = "";
+  TEST.questions.forEach(function(q,i){
+    var box = document.getElementById("q"+i), fb = document.getElementById("fb"+i);
+    var right = picks[i] === q.a;
+    if (right) score++; else wrongTypes.push(q.type);
+    box.className = "q " + (right ? "ok" : "bad");
+    fb.innerHTML = (right ? "Correct. " : "Not quite. Your answer: "+letters[picks[i]]+". Correct answer: "+letters[q.a]+". ") + q.why;
+    codeAns += letters[picks[i]];
+    var radios = document.getElementsByName("q"+i);
+    for (var k=0;k<radios.length;k++) radios[k].disabled = true;
+  });
+  document.getElementById("submit").disabled = true;
+  document.getElementById("score").textContent = "Score: "+score+" / "+TEST.questions.length;
+  var reco = document.getElementById("reco");
+  if (wrongTypes.length === 0){
+    reco.innerHTML = "<li>All correct. Next time try a harder article or a new topic.</li>";
+  } else {
+    var seen = {};
+    wrongTypes.forEach(function(t){
+      if (!seen[t]){ seen[t]=1; var li=document.createElement("li"); li.textContent = t+": "+TEST.tips[t]; reco.appendChild(li); }
+    });
+  }
+  var today = new Date().toISOString().slice(0,10);
+  document.getElementById("code").value = TEST.id+"|"+TEST.topic+"|"+TEST.difficulty+"|"+score+"/"+TEST.questions.length+"|"+codeAns+"|"+today;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").scrollIntoView();
+}
+function copyCode(){
+  var el=document.getElementById("code"), msg=document.getElementById("copied");
+  function ok(){msg.textContent="Copied. Paste it in your chat.";}
+  function fallback(){el.select();el.setSelectionRange(0,99999);try{document.execCommand("copy")?ok():msg.textContent="Could not copy. Select the code and copy it by hand.";}catch(e){msg.textContent="Could not copy. Select the code and copy it by hand.";}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el.value).then(ok,fallback);}else{fallback();}
+}
+</script>
+</body>
+</html>
