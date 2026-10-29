@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Reading practice 035h: The turns at Tendwa</title>
+<style>
+body{font-family:Georgia,serif;max-width:760px;margin:0 auto;padding:16px;line-height:1.6;color:#222;background:#fafafa}
+h1{font-size:1.5rem;margin-bottom:4px}
+.meta{font-family:Arial,sans-serif;font-size:.85rem;background:#eef3f8;border:1px solid #cdd9e5;border-radius:6px;padding:10px;margin:10px 0 20px}
+.meta span{display:inline-block;margin-right:14px}
+.passage{background:#fff;border:1px solid #ddd;border-radius:6px;padding:4px 18px}
+.q{font-family:Arial,sans-serif;background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:bold}
+.q label{display:block;padding:4px 0;cursor:pointer}
+.qtype{font-weight:normal;font-size:.8rem;color:#567}
+button{font-size:1rem;padding:10px 22px;border:0;border-radius:6px;background:#1f5fa8;color:#fff;cursor:pointer}
+button:disabled{background:#999}
+.ok{border-left:6px solid #2e8b57}
+.bad{border-left:6px solid #c0392b}
+.fb{font-family:Arial,sans-serif;font-size:.92rem;margin-top:8px}
+#result{font-family:Arial,sans-serif;display:none;margin-top:20px}
+#code{width:100%;box-sizing:border-box;font-family:monospace;padding:8px;resize:none;word-break:break-all;overflow-wrap:anywhere;white-space:pre-wrap}
+.note{font-family:Arial,sans-serif;font-size:.8rem;color:#555}
+</style>
+</head>
+<body>
+<h1>The turns at Tendwa</h1>
+<div class="meta" id="meta">
+<span><b>Test ID:</b> <span id="mid"></span></span>
+<span><b>Topic:</b> <span id="mtopic"></span></span>
+<span><b>Editorial difficulty:</b> <span id="mdiff"></span> (a guess before reading, not a measured level)</span><br>
+<span><b>Words:</b> <span id="mwords"></span></span>
+<span><b>Reading time:</b> about 2 minutes</span><br>
+<span><b>Source:</b> original passage written for practice, so full text is included.</span>
+</div>
+
+<div class="passage" id="passage">
+<p>Every October the fields around Tendwa are watered by turns written on a wooden board in the panchayat veranda, a list older than the concrete canal itself. It named every holding, its day and its share, and the canal's gates were opened and shut to that list by whoever kept the keys that season. When Rhea, an irrigation engineer posted to the district, first saw the board she assumed it was a courtesy: tradition honoured in form, superseded in fact.</p>
+<p>She spent a season measuring. Flow at the headworks, seepage along the laterals, the walking time between gates. She logged it all in a field book that grew heavier each week. Her models said each holding should receive water for a number of minutes proportional to its area and distance from the canal. The old turns, allotted in "the time a brass lota takes to empty," matched her computed times to within three minutes in forty-one of the forty-three holdings.</p>
+<p>The two exceptions taught her more than the forty-one. The field called Bhoora received barely half of what her model allowed, and Khairi received a third more. The board's keeper, an old farmer named Sukhilal, could not explain in her vocabulary: Bhoora's soil "tired quickly" and Khairi's "drank and stayed thirsty." A soil survey that winter showed Bhoora's saline patch, where extra water lifts salt toward the roots, and Khairi's sandy lens, which drains before the crop is fed. The turns had been encoding that difference for generations before anyone wrote it down.</p>
+<p>Rhea's report to the district recommended keeping the board and appending her tables to it, not replacing it. The board, she wrote, was a database that happened to be written in wood, and its homely units were a memory device rather than a measurement error. The engineer who succeeds her, she noted, will inherit both, and should learn the lota before the spreadsheet.</p>
+</div>
+
+<form id="quiz" onsubmit="return false">
+<div id="questions"></div>
+<button id="submit" type="button" onclick="submitQuiz()">Submit answers</button>
+<p class="note" id="warn"></p>
+</form>
+
+<div id="result">
+<h2 id="score"></h2>
+<div id="review"></div>
+<h3>What to practise next</h3>
+<ul id="reco"></ul>
+<h3>Results code</h3>
+<p class="note">This page does not save anything and does not send anything anywhere. Press Copy result code (or select it) and paste it into your own Instinct chat so the result can be recorded.</p>
+<textarea id="code" rows="2" readonly onclick="this.select()"></textarea>
+<button id="copybtn" type="button" onclick="copyCode()">Copy result code</button> <span id="copied" class="note"></span>
+</div>
+
+<script>
+// Answer key is inside this file on purpose (practice use). Anyone can read it in the page source.
+var TEST = {
+ "id": "VA-035h",
+ "topic": "history",
+ "difficulty": "medium-hard",
+ "questions": [
+  {
+   "type": "vocabulary in context",
+   "q": "In the first paragraph, the word \"superseded\" is used to mean",
+   "o": [
+    "replaced in practice by something newer",
+    "honoured in public as the better way",
+    "kept hidden from the district officials",
+    "written down more carefully than before"
+   ],
+   "a": 0,
+   "why": "Rhea assumed the board was honoured in form but 'superseded in fact' - that is, the canal and its modern works had replaced it in practice, whatever courtesy it was shown. The sentence sets form against fact; praise, concealment and careful copying are not the contrast the sentence makes."
+  },
+  {
+   "type": "inference",
+   "q": "Which of the following does the passage most strongly suggest about Sukhilal?",
+   "o": [
+    "He resented the engineer's instruments and refused to answer her questions",
+    "He had secretly adjusted several turns to favour his own family's fields",
+    "He understood what the unusual turns achieved without the technical words for them",
+    "He asked for the soil survey to be carried out in his own fields"
+   ],
+   "a": 2,
+   "why": "Sukhilal described Bhoora's soil as one that 'tires quickly' and Khairi's as one that 'drank and stayed thirsty' - accurate pictures of the saline patch and the sandy lens, given in his own terms rather than the survey's. The passage says only that he 'could not explain in her vocabulary'; it records no resentment, no favouritism and no request from him."
+  },
+  {
+   "type": "weaken",
+   "q": "Rhea concludes that the old turns preserve tested knowledge. Which of the following, if true, would most weaken that conclusion?",
+   "o": [
+    "some younger farmers grumble that the fixed turns are inconvenient for their schedules",
+    "the same two fields, watered a season by her computed times, yielded no worse",
+    "the brass lota was replaced by a tin mug of similar size decades ago",
+    "Rhea's flow meters had to be recalibrated twice during the measuring season"
+   ],
+   "a": 1,
+   "why": "Her case for preserved knowledge rests on the two anomalous turns fitting Bhoora's saline patch and Khairi's sandy lens. If those very fields did no worse under her computed times, the anomalies were not carrying useful knowledge - direct counter-evidence from the same fields. Grumbling about schedules, a same-sized mug and routine recalibration touch the surroundings, not whether the turns encode anything."
+  },
+  {
+   "type": "paragraph function",
+   "q": "The author mentions Rhea's report to the district in the last paragraph primarily in order to",
+   "o": [
+    "criticise how slowly the district offices adopt new recommendations",
+    "suggest the wooden board would not survive without official protection",
+    "show her conclusion applied - measurement joined to the old tradition",
+    "list the qualifications that made her report persuasive to the district"
+   ],
+   "a": 2,
+   "why": "The report is the passage's resolution: keeping the board and appending her tables shows her new understanding applied, with measurement added to the tradition instead of displacing it. The paragraph says nothing about the office's speed, the board's physical survival or her credentials."
+  },
+  {
+   "type": "main idea",
+   "q": "Which of the following best states the passage's central idea?",
+   "o": [
+    "modern engineering methods should always defer to traditional village practice",
+    "the brass lota proved a more accurate instrument than Rhea's meters",
+    "Tendwa's board survived because officials rarely inspected the canal",
+    "a tradition can preserve tested knowledge without technical language"
+   ],
+   "a": 3,
+   "why": "The passage's arc is Rhea moving from assuming the board is a courtesy to finding that its turns match her models and encode soil knowledge its keeper describes only in homely words - precision preserved without technical language. It never claims tradition should always win, compares no instruments for accuracy, and gives no reason for the board's survival."
+  }
+ ],
+ "tips": {
+  "main idea": "Say the whole passage in one sentence before reading the options. Reject options that cover only one part, overstate, or blame.",
+  "weaken": "Ask what new fact would make the claim less likely. The right option offers another cause or counter-evidence, while wrong options agree with the claim or are off topic.",
+  "inference": "Separate what the evidence supports from what it leaves unknown. Test each option against the passage.",
+  "tone or purpose": "Underline words that show attitude. Ask what the author wants the reader to understand or feel at the end.",
+  "vocabulary in context": "Read the sentence around the word, guess a meaning, then test each option in the sentence.",
+  "detail": "Find the exact sentence that answers the question, then check that the option matches it, not just something similar.",
+  "paragraph function": "Ask what job the paragraph does in the argument: introduce, support, qualify, concede, conclude. Match the option to that job, not to one detail inside it.",
+  "assumption": "Look for what the argument takes for granted. The right option is something the conclusion needs but the passage never says."
+ }
+};
+var letters = ["A","B","C","D"];
+document.getElementById("mid").textContent = TEST.id;
+document.getElementById("mtopic").textContent = TEST.topic;
+document.getElementById("mdiff").textContent = TEST.difficulty;
+document.getElementById("mwords").textContent = document.getElementById("passage").innerText.trim().split(/\s+/).length;
+var qs = document.getElementById("questions");
+TEST.questions.forEach(function(q, i){
+  var d = document.createElement("div"); d.className = "q"; d.id = "q"+i;
+  var h = '<p>'+(i+1)+'. '+q.q+' <span class="qtype">('+q.type+')</span></p>';
+  q.o.forEach(function(opt, j){
+    h += '<label><input type="radio" name="q'+i+'" value="'+j+'"> '+letters[j]+'. '+opt+'</label>';
+  });
+  h += '<div class="fb" id="fb'+i+'"></div>';
+  d.innerHTML = h; qs.appendChild(d);
+});
+function submitQuiz(){
+  var picks = [];
+  for (var i=0;i<TEST.questions.length;i++){
+    var c = document.querySelector('input[name="q'+i+'"]:checked');
+    picks.push(c ? parseInt(c.value,10) : -1);
+  }
+  if (picks.indexOf(-1) !== -1){
+    document.getElementById("warn").textContent = "Please answer every question before submitting.";
+    return;
+  }
+  document.getElementById("warn").textContent = "";
+  var score = 0, wrongTypes = [], codeAns = "";
+  TEST.questions.forEach(function(q,i){
+    var box = document.getElementById("q"+i), fb = document.getElementById("fb"+i);
+    var right = picks[i] === q.a;
+    if (right) score++; else wrongTypes.push(q.type);
+    box.className = "q " + (right ? "ok" : "bad");
+    fb.innerHTML = (right ? "Correct. " : "Not quite. Your answer: "+letters[picks[i]]+". Correct answer: "+letters[q.a]+". ") + q.why;
+    codeAns += letters[picks[i]];
+    var radios = document.getElementsByName("q"+i);
+    for (var k=0;k<radios.length;k++) radios[k].disabled = true;
+  });
+  document.getElementById("submit").disabled = true;
+  document.getElementById("score").textContent = "Score: "+score+" / "+TEST.questions.length;
+  var reco = document.getElementById("reco");
+  if (wrongTypes.length === 0){
+    reco.innerHTML = "<li>All correct. Next time try a harder article or a new topic.</li>";
+  } else {
+    var seen = {};
+    wrongTypes.forEach(function(t){
+      if (!seen[t]){ seen[t]=1; var li=document.createElement("li"); li.textContent = t+": "+TEST.tips[t]; reco.appendChild(li); }
+    });
+  }
+  var today = new Date().toISOString().slice(0,10);
+  document.getElementById("code").value = TEST.id+"|"+TEST.topic+"|"+TEST.difficulty+"|"+score+"/"+TEST.questions.length+"|"+codeAns+"|"+today;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").scrollIntoView();
+}
+function copyCode(){
+  var el=document.getElementById("code"), msg=document.getElementById("copied");
+  function ok(){msg.textContent="Copied. Paste it in your chat.";}
+  function fallback(){el.select();el.setSelectionRange(0,99999);try{document.execCommand("copy")?ok():msg.textContent="Could not copy. Select the code and copy it by hand.";}catch(e){msg.textContent="Could not copy. Select the code and copy it by hand.";}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el.value).then(ok,fallback);}else{fallback();}
+}
+</script>
+</body>
+</html>
