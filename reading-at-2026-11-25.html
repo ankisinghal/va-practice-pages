@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading practice 070h: The moment both can see</title>
+<style>
+body{font-family:Georgia,serif;max-width:760px;margin:0 auto;padding:16px;line-height:1.6;color:#222;background:#fafafa}
+h1{font-size:1.5rem;margin-bottom:4px}
+.meta{font-family:Arial,sans-serif;font-size:.85rem;background:#eef3f8;border:1px solid #cdd9e5;border-radius:6px;padding:10px;margin:10px 0 20px}
+.meta span{display:inline-block;margin-right:14px}
+.passage{background:#fff;border:1px solid #ddd;border-radius:6px;padding:4px 18px}
+.q{font-family:Arial,sans-serif;background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:bold}
+.q label{display:block;padding:4px 0;cursor:pointer}
+.qtype{font-weight:normal;font-size:.8rem;color:#567}
+button{font-size:1rem;padding:10px 22px;border:0;border-radius:6px;background:#1f5fa8;color:#fff;cursor:pointer}
+button:disabled{background:#999}
+.ok{border-left:6px solid #2e8b57}
+.bad{border-left:6px solid #c0392b}
+.fb{font-family:Arial,sans-serif;font-size:.92rem;margin-top:8px}
+#result{font-family:Arial,sans-serif;display:none;margin-top:20px}
+#code{width:100%;box-sizing:border-box;font-family:monospace;padding:8px;resize:none;word-break:break-all;overflow-wrap:anywhere;white-space:pre-wrap}
+.note{font-family:Arial,sans-serif;font-size:.8rem;color:#555}
+</style>
+</head>
+<body>
+<h1>The moment both can see</h1>
+<div class="meta" id="meta">
+<span><b>Test ID:</b> <span id="mid"></span></span>
+<span><b>Topic:</b> <span id="mtopic"></span></span>
+<span><b>Editorial difficulty:</b> <span id="mdiff"></span> (a guess before reading, not a measured level)</span><br>
+<span><b>Words:</b> <span id="mwords"></span></span>
+<span><b>Reading time:</b> about 2 minutes</span><br>
+<span><b>Source:</b> original fictional passage written for practice, so full text is included.</span>
+</div>
+
+<div class="passage" id="passage">
+<p>In an imagined rehearsal, two stagehands stand at opposite ends of a curtain. The curtain opens properly only if both release their ropes on the same beat. Each can see a lamp above the stage, and each knows that the other can see it. The director has agreed with both that a flash will be their shared signal. Until it comes, neither should release a rope.</p>
+<p>Before the rehearsal, the director separately tells each stagehand that the equipment is ready. Both messages arrive, and both stagehands believe them. Yet the curtain stays closed. Readiness is not the missing information. Neither stagehand knows whether the other has received a message or is about to act. Releasing alone would spoil the opening, so waiting remains consistent with believing the director.</p>
+<p>The lamp then flashes. It adds no new fact about the equipment. Instead, it makes the occasion for acting visible to both at once. Each sees the flash and can see that the other has an unobstructed view of it. Their agreement connects that shared observation to the same action. They release together. The flash matters because of what they can reasonably expect of one another, not because it carries a longer or more accurate report.</p>
+<p>This would not work merely because a lamp happened to be bright. If one stagehand thought the other could not see it, the uncertainty would return. Nor would a visible flash coordinate people who had agreed to different responses. The physical event, their awareness of its shared visibility, and the prior agreement do different jobs. Together they make the flash usable as a signal.</p>
+<p>Afterwards, the director leaves the separate readiness messages in place. They tell each stagehand whether the equipment can be used. For the opening itself, she keeps the shared flash. The two forms of communication are not rivals in a contest over truth. One supplies a fact; the other gives people who already accept that fact a common occasion to move. On the next run, both hands remain on the ropes until the lamp lights.</p>
+</div>
+
+<form id="quiz" onsubmit="return false">
+<div id="questions"></div>
+<button id="submit" type="button" onclick="submitQuiz()">Submit answers</button>
+<p class="note" id="warn"></p>
+</form>
+
+<div id="result">
+<h2 id="score"></h2>
+<div id="review"></div>
+<h3>What to practise next</h3>
+<ul id="reco"></ul>
+<h3>Results code</h3>
+<p class="note">This page does not save anything and does not send anything anywhere. Press Copy result code (or select it) and paste it into your own Instinct chat so the result can be recorded.</p>
+<textarea id="code" rows="2" readonly onclick="this.select()"></textarea>
+<button id="copybtn" type="button" onclick="copyCode()">Copy result code</button> <span id="copied" class="note"></span>
+</div>
+
+<script>
+// Answer key is inside this file on purpose (practice use). Anyone can read it in the page source.
+var TEST = {
+    "id": "VA-070h",
+    "topic": "philosophy",
+    "difficulty": "medium-hard",
+    "questions": [
+        {
+            "type": "inference",
+            "q": "Why can both stagehands believe the readiness messages and still reasonably wait?",
+            "o": [
+                "Each lacks assurance that the other has received the message and will release at the same moment",
+                "Each has now learned that the equipment is faulty but wishes to avoid contradicting the director openly",
+                "Each understands the message as an instruction to release immediately without watching the other",
+                "Each prefers a longer readiness report because a short message cannot contain a reliable fact"
+            ],
+            "a": 0,
+            "role": "proposed",
+            "why": "A identifies missing mutual expectations about receipt and action, despite accepted readiness. B invents a fault. C reverses the waiting protocol. D mistakes message length for the issue.",
+            "designation": null,
+            "credit": null,
+            "operative": false
+        },
+        {
+            "type": "main idea",
+            "q": "What distinction is central to the passage's account of the curtain opening?",
+            "o": [
+                "A bright physical event always gives people much more fully reliable factual information than separate spoken messages",
+                "People can accept the same fact yet need a shared, agreed signal to coordinate their actions together",
+                "A director must replace all individual messages with a visible signal to prevent equipment failures",
+                "A successful opening requires stagehands to decide independently rather than rely on shared expectations"
+            ],
+            "a": 1,
+            "role": "observed-only",
+            "why": "B distinguishes shared factual belief from coordinated action. A makes brightness sufficient. C removes the retained readiness messages. D rejects the mutual expectations that enable release."
+        },
+        {
+            "type": "author purpose",
+            "q": "Why does the passage consider a stagehand who thinks the other cannot see the lamp?",
+            "o": [
+                "To suggest that the lamp can make unprepared equipment ready whenever its light is sufficiently strong",
+                "To show that the director should announce separate release times when both stagehands can see the stage",
+                "To explain why a common signal depends on shared visibility recognized by both, rather than brightness alone",
+                "To establish that one stagehand can open the curtain correctly without the other releasing a rope"
+            ],
+            "a": 2,
+            "role": "observed-only",
+            "why": "C identifies the visibility condition that makes the shared event useful. A confuses readiness with signalling. B invents separate times. D contradicts the task."
+        },
+        {
+            "type": "vocabulary in context",
+            "q": "What does \"consistent\" most nearly mean in the sentence \"Releasing alone would spoil the opening, so waiting remains consistent with believing the director.\"?",
+            "o": [
+                "repeated in precisely the same way during every rehearsal, regardless of the information available",
+                "caused by a stagehand deliberately refusing to really accept what the director has said about the equipment",
+                "compatible with accepting the message as true, rather than evidence that the stagehand disbelieves it",
+                "guaranteed to produce a successful opening even if the other stagehand releases at a different time"
+            ],
+            "a": 2,
+            "role": "observed-only",
+            "why": "C means compatible, not contradictory. A means repetitive, B posits disbelief, D wrongly guarantees success."
+        },
+        {
+            "type": "weaken",
+            "q": "Which change would most weaken the reason the shared flash enables the stagehands to release together?",
+            "o": [
+                "The director repeats the same truthful readiness message to each stagehand just before the rehearsal begins",
+                "Both stagehands still continue to firmly believe that the equipment is ready when the visible signal finally appears",
+                "Both can see the lamp above the stage in the same place on the next rehearsal day",
+                "The stagehands were told different meanings for the flash, one to release and the other to keep holding"
+            ],
+            "a": 3,
+            "role": "proposed",
+            "why": "D removes the agreed common response, so a shared observation no longer aligns actions. A adds readiness information, B preserves readiness belief, C preserves visibility.",
+            "designation": null,
+            "credit": null,
+            "operative": false
+        }
+    ],
+    "tips": {
+        "main idea": "Say the whole passage in one sentence before reading the options. Reject options that cover only one part, overstate, or blame.",
+        "weaken": "Ask what new fact would make the claim less likely. The right option offers another cause or counter-evidence, while wrong options agree with the claim or are off topic.",
+        "inference": "Separate what the evidence supports from what it leaves unknown. Test each option against the passage.",
+        "tone or purpose": "Underline words that show attitude. Ask what the author wants the reader to understand or feel at the end.",
+        "vocabulary in context": "Read the sentence around the word, guess a meaning, then test each option in the sentence.",
+        "detail": "Find the exact sentence that answers the question, then check that the option matches it, not just something similar.",
+        "paragraph function": "Ask what job the paragraph does in the argument: introduce, support, qualify, concede, conclude. Match the option to that job, not to one detail inside it.",
+        "assumption": "Look for what the argument takes for granted. The right option is something the conclusion needs but the passage never says.",
+        "author purpose": "Ask what the named example or imagined revision does in the argument, rather than treating it as advice to a character."
+    },
+    "note": "Role metadata only (non-rendered); no counters, credit or activation by this artifact.",
+    "origin": "Original fictional practice prose; invented scenario, no empirical claims."
+};
+var letters = ["A","B","C","D"];
+document.getElementById("mid").textContent = TEST.id;
+document.getElementById("mtopic").textContent = TEST.topic;
+document.getElementById("mdiff").textContent = TEST.difficulty;
+document.getElementById("mwords").textContent = document.getElementById("passage").innerText.trim().split(/\s+/).length;
+var qs = document.getElementById("questions");
+TEST.questions.forEach(function(q, i){
+  var d = document.createElement("div"); d.className = "q"; d.id = "q"+i;
+  var h = '<p>'+(i+1)+'. '+q.q+'</p>';
+  q.o.forEach(function(opt, j){
+    h += '<label><input type="radio" name="q'+i+'" value="'+j+'"> '+letters[j]+'. '+opt+'</label>';
+  });
+  h += '<div class="fb" id="fb'+i+'"></div>';
+  d.innerHTML = h; qs.appendChild(d);
+});
+function submitQuiz(){
+  var picks = [];
+  for (var i=0;i<TEST.questions.length;i++){
+    var c = document.querySelector('input[name="q'+i+'"]:checked');
+    picks.push(c ? parseInt(c.value,10) : -1);
+  }
+  if (picks.indexOf(-1) !== -1){
+    document.getElementById("warn").textContent = "Please answer every question before submitting.";
+    return;
+  }
+  document.getElementById("warn").textContent = "";
+  var score = 0, wrongTypes = [], codeAns = "";
+  TEST.questions.forEach(function(q,i){
+    var box = document.getElementById("q"+i), fb = document.getElementById("fb"+i);
+    var right = picks[i] === q.a;
+    if (right) score++; else wrongTypes.push(q.type);
+    box.className = "q " + (right ? "ok" : "bad");
+    fb.innerHTML = (right ? "Correct. " : "Not quite. Your answer: "+letters[picks[i]]+". Correct answer: "+letters[q.a]+". ") + q.why;
+    codeAns += letters[picks[i]];
+    var radios = document.getElementsByName("q"+i);
+    for (var k=0;k<radios.length;k++) radios[k].disabled = true;
+  });
+  document.getElementById("submit").disabled = true;
+  document.getElementById("score").textContent = "Score: "+score+" / "+TEST.questions.length;
+  var reco = document.getElementById("reco");
+  if (wrongTypes.length === 0){
+    reco.innerHTML = "<li>All correct. Your result code is ready to copy.</li>";
+  } else {
+    var seen = {};
+    wrongTypes.forEach(function(t){
+      if (!seen[t]){ seen[t]=1; var li=document.createElement("li"); li.textContent = t+": "+TEST.tips[t]; reco.appendChild(li); }
+    });
+  }
+  var today = new Date().toISOString().slice(0,10);
+  document.getElementById("code").value = TEST.id+"|"+TEST.topic+"|"+TEST.difficulty+"|"+score+"/"+TEST.questions.length+"|"+codeAns+"|"+today;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").scrollIntoView();
+}
+function copyCode(){
+  var el=document.getElementById("code"), msg=document.getElementById("copied");
+  function ok(){msg.textContent="Copied. Paste it in your chat.";}
+  function fallback(){el.select();el.setSelectionRange(0,99999);try{document.execCommand("copy")?ok():msg.textContent="Could not copy. Select the code and copy it by hand.";}catch(e){msg.textContent="Could not copy. Select the code and copy it by hand.";}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el.value).then(ok,fallback);}else{fallback();}
+}
+</script>
+</body>
+</html>
